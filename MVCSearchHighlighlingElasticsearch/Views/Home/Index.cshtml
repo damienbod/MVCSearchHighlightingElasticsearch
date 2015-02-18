@@ -1,0 +1,43 @@
+﻿
+
+<h3>Add your text and click enter for the fuzzy search in Elasticsearch with highlighting</h3>
+<div class="row"> 
+    <form id="termsearch" action="/home/search" method="post">
+        <input id="termInput" name="termInput" type="text" style="width:500px" />
+    </form>
+</div>
+
+<br/>
+
+<div id="results">
+    No results  
+</div>
+
+@section scripts
+{
+  
+<script type="text/javascript">
+    var frm = $('#termsearch');
+    frm.submit(function (ev) {
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: 'term=' + $("#termInput").val(),
+            success: function (data) {
+ 
+                var divItem = $("#results");
+                divItem.empty();
+                var arr = $.parseJSON(data);
+
+                for (i = 0; i < arr.length; i++) {
+                    $('<div/>', {
+                        'html': arr[i] + '<br/><hr>'
+                    }).appendTo(divItem);
+                }
+            }
+        });
+
+        ev.preventDefault();
+    });
+</script>
+}
