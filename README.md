@@ -1,6 +1,6 @@
 # MVCSearchHighlighlingElasticsearch
 
-Elasticsearch
+# ElasticsearchCRUD
 
 <strong>Documentation:</strong>
  http://damienbod.wordpress.com/2014/09/22/elasticsearch-crud-net-provider/
